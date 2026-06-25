@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png"
+          href="{{ url_for('static', filename='logo.png') }}">
+</head>
+
+<body class="{% if session.get('dark') %}dark-mode{% endif %}">
+
+    <!-- Navbar -->
+
+    <nav style="display:flex; align-items:center; justify-content:space-between; background:#2563eb; padding:10px 20px;">
+
+        <!-- LEFT SIDE: LOGO + TITLE -->
+        <div style="display:flex; align-items:center; gap:10px;">
+    
+            <img src="{{ url_for('static', filename='logo.jpeg') }}"
+                 style="width:45px; height:45px; border-radius:8px;">
+    
+            <h2 style="color:white;">AI Resume Analyzer</h2>
+    
+        </div>
+    
+        <!-- RIGHT SIDE LINKS -->
+        <div>
+    
+            <a href="/dashboard" style="color:white; margin-right:15px;">Dashboard</a>
+            <a href="/profile" style="color:white; margin-right:15px;">Profile</a>
+            <a href="/logout" style="color:white;">Logout</a>
+    
+        </div>
+    
+    </nav>
+
+    <!-- Hero Section -->
+
+    <section class="hero">
+
+        <h1>
+            AI Resume Analyzer & Job Recommendation System
+        </h1>
+
+        <p>
+
+            Improve your resume, check ATS compatibility,
+            discover suitable job roles, and prepare for
+            interviews using Artificial Intelligence.
+
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/register">
+
+                <button class="btn">
+
+                    Get Started
+
+                </button>
+
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- Features -->
+
+    <div class="dashboard">
+
+        <h1>Project Features</h1>
+
+        <div class="cards">
+
+            <div class="feature-card">
+
+                <h2>Resume Analyzer</h2>
+
+                <p>
+
+                    Upload your resume and get job role
+                    recommendations based on your skills.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h2>ATS Resume Checker</h2>
+
+                <p>
+
+                    Compare your resume with job descriptions
+                    and improve ATS score.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h2>Interview Preparation</h2>
+
+                <p>
+
+                    Generate HR, technical and
+                    company-specific interview questions.
+
+                </p>
+
+            </div>
+
+            <div class="feature-card">
+
+                <h2>AI Suggestions</h2>
+
+                <p>
+
+                    Get intelligent suggestions to improve
+                    your resume and increase selection chances.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="footer">
+
+        <p>
+
+            © 2026 AI Resume Analyzer & Job Recommendation System
+
+        </p>
+
+    </div>
+
+</body>
+
+</html>

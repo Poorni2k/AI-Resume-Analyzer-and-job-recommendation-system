@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="{% if session.get('dark') %}dark-mode{% endif %}">
+
+<nav style="display:flex; align-items:center; justify-content:space-between; background:#2563eb; padding:10px 20px;">
+
+    <div style="display:flex; align-items:center; gap:10px;">
+        <img src="{{ url_for('static', filename='logo.jpeg') }}"
+             style="width:45px; height:45px; border-radius:8px;">
+        <h2 style="color:white;">AI Resume Analyzer</h2>
+    </div>
+
+    <div>
+        <a href="/dashboard" style="color:white; margin-right:15px;">Dashboard</a>
+        <a href="/profile" style="color:white; margin-right:15px;">Profile</a>
+        <a href="/logout" style="color:white;">Logout</a>
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="card" style="text-align:center;">
+
+        <h1>🚫 Access Denied</h1>
+
+        <p style="font-size:18px; margin-top:15px;">
+            You do not have permission to access the Admin Dashboard.
+        </p>
+
+        <p style="color:gray;">
+            This area is restricted to administrators only.
+        </p>
+
+        <br>
+
+        <a href="/dashboard">
+            <button class="btn">
+                Back to Dashboard
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>© 2026 AI Resume Analyzer & Job Recommendation System</p>
+</div>
+
+</body>
+</html>

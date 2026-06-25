@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile - AI Resume Analyzer</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+<link rel="icon" type="image/png"
+      href="{{ url_for('static', filename='logo.png') }}">
+<style>
+
+/* Tabs */
+.tab-buttons {
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.tab-btn {
+    padding:10px 18px;
+    border:none;
+    cursor:pointer;
+    border-radius:8px;
+    background:#e5e7eb;
+    font-weight:600;
+}
+
+.tab-btn.active {
+    background:#2563eb;
+    color:white;
+}
+
+/* Content */
+.tab-content {
+    display:none;
+    margin-top:20px;
+}
+
+.tab-content.active {
+    display:block;
+}
+
+.box {
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+</style>
+
+</head>
+
+<body class="{% if session.get('dark') %}dark-mode{% endif %}">
+
+<!-- NAVBAR -->
+
+<nav style="display:flex; align-items:center; justify-content:space-between; background:#2563eb; padding:10px 20px;">
+
+    <!-- LEFT SIDE: LOGO + TITLE -->
+    <div style="display:flex; align-items:center; gap:10px;">
+
+        <img src="{{ url_for('static', filename='logo.jpeg') }}"
+             style="width:45px; height:45px; border-radius:8px;">
+
+        <h2 style="color:white;">AI Resume Analyzer</h2>
+
+    </div>
+
+    <!-- RIGHT SIDE LINKS -->
+    <div>
+
+        <a href="/dashboard" style="color:white; margin-right:15px;">Dashboard</a>
+        <a href="/profile" style="color:white; margin-right:15px;">Profile</a>
+        <a href="/logout" style="color:white;">Logout</a>
+
+    </div>
+
+</nav>
+
+<!-- PROFILE HEADER -->
+
+<div class="container">
+
+<div class="card">
+
+<h1>👤 User Profile</h1>
+
+<p style="text-align:center;">Welcome {{ username }}</p>
+
+<!-- TAB BUTTONS -->
+
+<div class="tab-buttons">
+
+    <button class="tab-btn active" onclick="openTab('details')">
+        Details
+    </button>
+
+    <button class="tab-btn" onclick="openTab('about')">
+        About
+    </button>
+
+    <button class="tab-btn" onclick="openTab('settings')">
+        Settings
+    </button>
+
+</div>
+
+<!-- TAB CONTENT -->
+
+<div id="details" class="tab-content active">
+
+    <div class="box">
+
+        <h3>Account Details</h3>
+
+        <p><b>Username:</b> {{ username }}</p>
+        <p><b>Status:</b> Active User</p>
+        <p><b>Project:</b> AI Resume Analyzer</p>
+
+    </div>
+
+</div>
+
+<div id="about" class="tab-content">
+
+    <div class="box">
+
+        <h3>About System</h3>
+
+        <p>
+            This AI Resume Analyzer helps users:
+        </p>
+
+        <ul>
+            <li>Analyze Resume</li>
+            <li>Check ATS Score</li>
+            <li>Improve Resume using AI suggestions</li>
+            <li>Generate Interview Questions</li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div id="settings" class="tab-content">
+
+    <div class="box">
+
+        <h3>Settings</h3>
+
+        <ul style="list-style:none; padding:0;">
+            <li>
+                <a href="/admin">🛠 Admin Dashboard</a>
+            </li>
+
+            <li style="margin-bottom:15px;">
+                <a href="/settings/password">🔐 Change Password</a>
+            </li>
+
+            <li style="margin-bottom:15px;">
+                <a href="/history">📄 Resume History</a>
+            </li>
+
+            <li>
+                <a href="/download_report">📥 Download Report</a>
+            </li>
+
+            <li>
+                <a href="/logout">🚪 Logout</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- SCRIPT -->
+
+<script>
+
+function openTab(tabName) {
+
+    let tabs = document.getElementsByClassName("tab-content");
+    let buttons = document.getElementsByClassName("tab-btn");
+
+    for (let t of tabs) {
+        t.classList.remove("active");
+    }
+
+    for (let b of buttons) {
+        b.classList.remove("active");
+    }
+
+    document.getElementById(tabName).classList.add("active");
+    event.target.classList.add("active");
+}
+
+</script>
+
+</body>
+</html>

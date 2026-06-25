@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Results - AI Resume System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png"
+          href="{{ url_for('static', filename='logo.png') }}">
+</head>
+
+<body class="{% if session.get('dark') %}dark-mode{% endif %}">
+
+    <!-- Navbar -->
+
+    <nav style="display:flex; align-items:center; justify-content:space-between; background:#2563eb; padding:10px 20px;">
+
+        <!-- LEFT SIDE: LOGO + TITLE -->
+        <div style="display:flex; align-items:center; gap:10px;">
+    
+            <img src="{{ url_for('static', filename='logo.jpeg') }}"
+                 style="width:45px; height:45px; border-radius:8px;">
+    
+            <h2 style="color:white;">AI Resume Analyzer</h2>
+    
+        </div>
+    
+        <!-- RIGHT SIDE LINKS -->
+        <div>
+    
+            <a href="/dashboard" style="color:white; margin-right:15px;">Dashboard</a>
+            <a href="/profile" style="color:white; margin-right:15px;">Profile</a>
+            <a href="/logout" style="color:white;">Logout</a>
+    
+        </div>
+    
+    </nav>
+
+    <!-- Results Container -->
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>Analysis Result</h1>
+
+            <hr style="margin:15px 0;">
+
+            <!-- ================= RESUME RESULT ================= -->
+
+            {% if result_type == "resume" %}
+
+                <h2>📄 Resume Analysis</h2>
+
+                <p><b>Extracted Text (Preview):</b></p>
+
+                <div class="result-box">
+
+                    <p>{{ text }}</p>
+
+                </div>
+
+                {% if jobs %}
+                <h3>Recommended Jobs:</h3>
+                <ul>
+                    {% for job in jobs %}
+                        <li>{{ job }}</li>
+                    {% endfor %}
+                </ul> 
+                {% endif %}
+
+            <!-- ================= ATS RESULT ================= -->
+
+            {% elif result_type == "ats" %}
+
+                <h2>📊 ATS Resume Score</h2>
+
+                <div class="score-box">
+
+                    <h1>{{ score }}%</h1>
+
+                    <p>ATS Compatibility Score</p>
+
+                </div>
+
+                <h3>❌ Missing Keywords</h3>
+
+                <div class="result-box">
+
+                    <ul>
+
+                        {% for word in missing %}
+
+                            <li>{{ word }}</li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+                <!-- AI IMPROVED RESUME -->
+
+                {% if result_type == "ats" %}
+
+                <h2>🤖 AI Resume Improvement</h2>
+
+                <p>
+                    Based on ATS analysis, our AI recommends the following improvements:
+                </p>
+
+                <pre class="ai-box">
+                    {{ improved_resume }}
+                </pre>
+
+                {% endif %} 
+
+            <!-- ================= INTERVIEW RESULT ================= -->
+
+            {% elif result_type == "interview" %}
+
+                <h2>🎯 Interview Questions</h2>
+
+                <p style="color:#666;">
+
+                    Prepare these questions for your interview.
+
+                </p>
+
+                <div style="margin-top:20px;">
+
+                    {% for q in questions %}
+
+                        <div class="question-box">
+
+                            {{ loop.index }}. {{ q }}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+            <br>
+
+            <a href="/dashboard">
+
+                <button class="btn">
+
+                    Back to Dashboard
+
+                </button>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <div class="footer">
+
+        <p>
+
+            © 2026 AI Resume Analyzer & Job Recommendation System
+
+        </p>
+
+    </div>
+
+</body>
+
+</html>

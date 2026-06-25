@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ATS Checker - AI Resume System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png"
+          href="{{ url_for('static', filename='logo.png') }}">
+</head>
+
+<body class="{% if session.get('dark') %}dark-mode{% endif %}">
+
+    <!-- Navbar -->
+
+    <nav style="display:flex; align-items:center; justify-content:space-between; background:#2563eb; padding:10px 20px;">
+
+        <!-- LEFT SIDE: LOGO + TITLE -->
+        <div style="display:flex; align-items:center; gap:10px;">
+    
+            <img src="{{ url_for('static', filename='logo.jpeg') }}"
+                 style="width:45px; height:45px; border-radius:8px;">
+    
+            <h2 style="color:white;">AI Resume Analyzer</h2>
+    
+        </div>
+    
+        <!-- RIGHT SIDE LINKS -->
+        <div>
+    
+            <a href="/dashboard" style="color:white; margin-right:15px;">Dashboard</a>
+            <a href="/profile" style="color:white; margin-right:15px;">Profile</a>
+            <a href="/logout" style="color:white;">Logout</a>
+    
+        </div>
+    
+    </nav>
+
+    <!-- ATS Section -->
+
+    <div class="container">
+
+        <div class="card">
+
+            <h1>ATS Resume Checker</h1>
+
+            <p style="text-align:center; margin-bottom:20px;">
+
+                Compare your resume with a job description
+                and get ATS score + improvement suggestions.
+
+            </p>
+
+            <form action="/ats_analysis"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                <input type="file"
+                       name="resume"
+                       class="input-box"
+                       required>
+
+                <textarea name="job_description"
+                          class="input-box"
+                          rows="8"
+                          placeholder="Paste Job Description here..."
+                          required></textarea>
+
+                <button type="submit"
+                        class="btn">
+
+                    Check ATS Score
+
+                </button>
+
+            </form>
+
+            <hr style="margin:25px 0;">
+
+            <h3>What this module does?</h3>
+
+            <ul style="margin-left:20px; color:#555;">
+
+                <li>Compares resume with job description</li>
+
+                <li>Calculates ATS score (0–100)</li>
+
+                <li>Finds missing keywords</li>
+
+                <li>Suggests AI improvements for low score resumes</li>
+
+                <li>Improves chances of shortlist</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+
+    <div class="footer">
+
+        <p>
+
+            © 2026 AI Resume Analyzer & Job Recommendation System
+
+        </p>
+
+    </div>
+
+</body>
+
+</html>

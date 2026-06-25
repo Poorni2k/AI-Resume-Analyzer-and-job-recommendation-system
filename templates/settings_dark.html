@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark Mode</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="{% if session.get('dark') %}dark-mode{% endif %}">
+
+<div class="container">
+
+    <div class="settings-box">
+
+        <h2>🌙 Dark Mode</h2>
+
+        <p>Enable or disable dark mode</p>
+
+        <a href="/toggle_dark">
+            <button class="btn">
+                {% if session.get('dark') %}
+                    Disable Dark Mode
+                {% else %}
+                    Enable Dark Mode
+                {% endif %}
+            </button>
+        </a>
+
+        <br><br>
+
+        <a href="/profile">⬅ Back</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

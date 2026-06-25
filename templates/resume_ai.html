@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Improver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="full-container">
+
+    <!-- LEFT: CHAT STYLE AI -->
+    <div class="left-panel">
+
+        <h1>AI Resume Improver</h1>
+
+        <form action="/improve" method="POST">
+            <textarea name="resume" placeholder="Paste your resume here..."></textarea>
+
+            <button type="submit">Improve with AI</button>
+        </form>
+
+        <div class="chat-response">
+            {{ result }}
+        </div>
+
+    </div>
+
+    <!-- RIGHT: MODEL RESUME IMAGE (FIX EMPTY SPACE) -->
+    <div class="right-panel">
+
+        <img src="{{ url_for('static', filename='resume.png') }}">
+
+        <div class="overlay">
+            Professional Resume Preview
+        </div>
+
+    </div>
+    <!-- screen img -->
+    <div class="layout">
+
+      <!-- LEFT SIDE (YOUR EXISTING CONTENT) -->
+      <div class="left">
+          <!-- your forms / chat / content already here -->
+      </div>
+  
+      <!-- RIGHT SIDE (MODEL RESUME IMAGE) -->
+      <div class="right">
+          <img src="{{ url_for('static', filename='resume.png') }}">
+      </div>
+</div>
+  
+  </div>
+
+</div>
+
+</body>
+</html>

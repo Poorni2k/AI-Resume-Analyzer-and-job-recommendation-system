@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard - AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+
+</head>
+
+<body class="{% if session.get('dark') %}dark-mode{% endif %}">
+
+<!-- NAVBAR -->
+<nav style="display:flex; align-items:center; justify-content:space-between; background:#2563eb; padding:10px 20px;">
+
+    <div style="display:flex; align-items:center; gap:10px;">
+        <img src="{{ url_for('static', filename='logo.jpeg') }}"
+             style="width:45px; height:45px; border-radius:8px;">
+        <h2 style="color:white;">AI Resume Analyzer</h2>
+    </div>
+
+    <div>
+        <a href="/dashboard" style="color:white; margin-right:15px;">Dashboard</a>
+        <a href="/profile" style="color:white; margin-right:15px;">Profile</a>
+        <a href="/settings/password" style="color:white; margin-right:15px;">Settings</a>
+        <a href="/toggle_dark" style="color:white; margin-right:15px;">
+            🌙 Dark Mode
+        </a>
+        <a href="/logout" style="color:white;">Logout</a>
+    </div>
+
+</nav>
+
+<!-- WELCOME -->
+<div class="dashboard">
+
+    <h1 style="text-align:center;">Welcome {{ username }}</h1>
+
+    <p style="text-align:center; margin-bottom:40px; color:gray;">
+        Manage your resume, ATS score, job recommendations and interview preparation
+    </p>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+        <!-- Resume Analyzer -->
+        <div class="feature-card">
+            <h2>📄 Resume Analyzer</h2>
+            <p>Upload your resume and get AI-based job recommendations.</p>
+            <a href="/analyzer">
+                <button class="btn">Open</button>
+            </a>
+        </div>
+
+        <!-- ATS Checker -->
+        <div class="feature-card">
+            <h2>📊 ATS Resume Checker</h2>
+            <p>Compare resume with job description and get ATS score.</p>
+            <a href="/ats_checker">
+                <button class="btn">Open</button>
+            </a>
+        </div>
+
+        <!-- Interview -->
+        <div class="feature-card">
+            <h2>🎯 Interview Preparation</h2>
+            <p>Generate HR + technical interview questions.</p>
+            <a href="/interview">
+                <button class="btn">Open</button>
+            </a>
+        </div>
+
+        <!-- History (NEW - IMPORTANT REAL WORLD FEATURE) -->
+        <div class="feature-card">
+            <h2>📁 History</h2>
+            <p>View all your past ATS reports and scores.</p>
+            <a href="/history">
+                <button class="btn">Open</button>
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© 2026 AI Resume Analyzer & Job Recommendation System</p>
+</div>
+
+</body>
+</html>

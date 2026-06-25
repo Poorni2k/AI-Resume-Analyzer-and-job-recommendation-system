@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume History</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png"
+          href="{{ url_for('static', filename='logo.png') }}">
+</head>
+
+<body class="{% if session.get('dark') %}dark-mode{% endif %}">
+
+<nav>
+    <h2>AI Resume Analyzer</h2>
+
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/profile">Profile</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>📄 Resume History</h1>
+
+        <table>
+
+            <tr>
+                <th>Resume Name</th>
+                <th>ATS Score</th>
+                <th>Date</th>
+                <th>Report</th>
+            </tr>
+            
+            {% for item in history %}
+            <tr>
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}%</td>
+                <td>{{ item[2] }}</td>
+                <td>
+                    <a href="/download_report">
+                        <button class="btn">📥 Download</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        <br>
+
+        <a href="/profile">
+            <button class="btn">
+                Back to Settings
+            </button>
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>
