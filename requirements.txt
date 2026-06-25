@@ -1,5 +1,6 @@
 flask
 sentence-transformers
 reportlab
-werkzeug
+numpy
+pandas
 gunicorn
